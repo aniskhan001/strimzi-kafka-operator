@@ -522,6 +522,6 @@ spec:
                     type: string
             observedGeneration:
               type: integer
-            field:
+            name:
               type: string
 {{- end -}}

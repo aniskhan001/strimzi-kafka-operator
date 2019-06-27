@@ -19,19 +19,19 @@ import lombok.EqualsAndHashCode;
         builderPackage = "io.fabric8.kubernetes.api.builder"
 )
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "conditions", "observedGeneration", "field" })
+@JsonPropertyOrder({ "conditions", "observedGeneration", "name" })
 @EqualsAndHashCode
 public class KafkaBridgeStatus extends Status {
     private static final long serialVersionUID = 1L;
 
-    private String field;
+    private String name;
 
-    @Description("Field")
-    public String getField() {
-        return field;
+    @Description("Name")
+    public String getName() {
+        return name;
     }
 
-    public void setField(String field) {
-        this.field = field;
+    public void setName(String name) {
+        this.name = name;
     }
 }
