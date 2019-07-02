@@ -36,7 +36,7 @@ class ConnectS2IST extends AbstractST {
     @Tag(FLAKY)
     @Tag(ACCEPTANCE)
     void testDeployS2IWithMongoDBPlugin() throws IOException {
-        testClassResources.kafkaConnectS2I(CONNECT_CLUSTER_NAME, 1)
+        getTestClassResources().kafkaConnectS2I(CONNECT_CLUSTER_NAME, 1)
             .editMetadata()
                 .addToLabels("type", "kafka-connect-s2i")
             .endMetadata()
@@ -68,12 +68,12 @@ class ConnectS2IST extends AbstractST {
         createTestClassResources();
         applyRoleBindings(NAMESPACE);
         // 050-Deployment
-        testClassResources.clusterOperator(NAMESPACE).done();
+        getTestClassResources().clusterOperator(NAMESPACE).done();
         deployTestSpecificResources();
     }
 
     void deployTestSpecificResources() {
-        testClassResources.kafkaEphemeral(CLUSTER_NAME, 3).done();
+        getTestClassResources().kafkaEphemeral(CLUSTER_NAME, 3).done();
     }
 
     @Override

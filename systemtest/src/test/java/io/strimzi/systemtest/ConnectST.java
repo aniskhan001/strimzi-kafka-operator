@@ -251,7 +251,7 @@ class ConnectST extends AbstractST {
 
         applyRoleBindings(NAMESPACE);
         // 050-Deployment
-        testClassResources.clusterOperator(NAMESPACE).done();
+        getTestClassResources().clusterOperator(NAMESPACE).done();
         deployTestSpecificResources();
     }
 
@@ -261,7 +261,7 @@ class ConnectST extends AbstractST {
         kafkaConfig.put("transaction.state.log.replication.factor", "3");
         kafkaConfig.put("transaction.state.log.min.isr", "2");
 
-        testClassResources.kafkaEphemeral(KAFKA_CLUSTER_NAME, 3)
+        getTestClassResources().kafkaEphemeral(KAFKA_CLUSTER_NAME, 3)
             .editSpec()
                 .editKafka()
                     .withConfig(kafkaConfig)
